@@ -6,7 +6,7 @@ Integrating and utilizing the logger library within your application involves in
 var logger = new Logger();
 logger.AddSink(new ConsoleSink());
 logger.AddSink(new FileSink("app.log"));
-
+```
 ## Logging Messages
 ```csharp
 // Logging an informational message
@@ -17,3 +17,4 @@ logger.Log(new Message("Debugging output", LogLevel.DEBUG, "Debug"));
 
 // Logging an error message
 logger.Log(new Message("An error occurred", LogLevel.ERROR, "Error"));
+```
