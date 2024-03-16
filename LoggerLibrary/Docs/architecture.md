@@ -1,23 +1,49 @@
-﻿## Logger Library Architecture:
-- Overview
-	This document provides a detailed overview of the architecture of the Logger Library, designed to offer a flexible and extensible logging framework for .NET applications. The library allows applications to log messages with various levels of severity to multiple destinations, called sinks. It emphasizes simplicity, performance, and extensibility.
+﻿# Logger Library Architecture
 
-## Core Components:
-The Logger Library architecture consists of several core components working together to provide comprehensive logging capabilities. These include:
-- Logger: The central component that applications interact with to log messages. It manages routing of messages to appropriate sinks based on the message level and sink configurations.
-- Message: Represents a log message with properties including the message content, level (e.g., DEBUG, INFO, WARN, ERROR, FATAL), and namespace.
-- Sink: An interface defining a destination for log messages. Implementations of this interface allow the library to log messages to various outputs such as console, file, database, or external systems.
-- LogLevel: An enumeration that defines the possible levels of log messages, used for filtering messages based on their importance.
+This document provides an overview of the architecture of the Logger Library, explaining the key components and their interactions. The Logger Library is designed to offer a flexible, easy-to-use logging system that can be integrated into various software projects.
 
-## Component Interaction:
-1. Logging Process:
-- An application calls the Logger.Log method to log a message, specifying the message content, level, and namespace.
-- The Logger determines which sinks are eligible for the given message based on the message level and each sink's configuration.
-- The Logger forwards the message to all eligible sinks.
+## Overview
 
-2. Sink Processing:
-- Each sink processes the message independently. For example, a FileSink might append the message to a log file, while a ConsoleSink outputs the message to the console.
-- Sinks can format the message or include additional metadata as configured.
+The Logger Library's architecture is built around the core concept of log messages being sent to one or more destinations, known as "sinks". The library is designed to be modular, allowing developers to easily add or remove logging destinations and to control the verbosity of logging through log levels.
+
+## Core Components
+
+### Logger
+
+- **Description**: The central component of the library, responsible for managing sinks and dispatching log messages to them.
+- **Responsibilities**:
+  - Collecting log messages from the application.
+  - Applying global log level filters.
+  - Distributing log messages to configured sinks.
+
+### Log Message
+
+- **Description**: Represents the data structure of a log message.
+- **Components**:
+  - `Content`: The actual text message to be logged.
+  - `Level`: The severity level (e.g., DEBUG, INFO, WARN, ERROR, FATAL).
+  - `Namespace`: An identifier to help categorize and filter messages based on the application's structure.
+
+### Sinks
+
+- **Description**: Abstractions for output destinations where log messages are sent.
+- **Types**:
+  - **ConsoleSink**: Outputs messages to the console.
+  - **FileSink**: Writes messages to a specified log file.
+  - **CustomSink(s)**: User-defined sinks for other destinations (e.g., databases, external systems).
+
+### LogLevel
+
+- **Description**: An enumeration defining the severity levels for log messages.
+- **Purpose**: Allows filtering messages based on their importance or severity, both globally and at the sink level.
+
+## Workflow
+
+1. **Initialization**: The application configures the `Logger` instance at startup, adding desired sinks and setting the global log level if necessary.
+2. **Logging**: Throughout its execution, the application sends log messages to the logger, specifying the message, its level, and the namespace.
+3. **Filtering and Dispatch**: The logger filters messages based on their level, then dispatches them to the configured sinks. Each sink can have its own level filter, further refining which messages are logged.
+4. **Output**: Sinks process and output the messages to their respective destinations.
+
 
 ## Extensibility
 The Logger Library is designed with extensibility in mind:
