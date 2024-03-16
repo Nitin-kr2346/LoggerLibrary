@@ -8,39 +8,40 @@ Before you can use the Logger Library, you need to include it in your project. I
 2. Initializing the Logger
 The first step in using the Logger Library is to create an instance of the Logger class. This instance will be the central point for all your logging operations.
 
-// var logger = new Logger();
-
+```csharp 
+var logger = new Logger();
+```
 ## Configuring Sinks:
 A "sink" is a destination for your log messages, such as the console or a file. You must configure one or more sinks to determine where your log messages will be outputted.
 
 - Console Sink:
 To log messages to the console, create an instance of ConsoleSink and add it to your logger.
-
-//var consoleSink = new ConsoleSink();
-//logger.AddSink(consoleSink);
-
+```csharp 
+var consoleSink = new ConsoleSink();
+logger.AddSink(consoleSink);
+```
 - File Sink
 To log messages to a file, create an instance of FileSink with the desired file path and add it to your logger.
-
-//var fileSink = new FileSink("path/to/your/logfile.log");
-//logger.AddSink(fileSink);
-
+```csharp 
+var fileSink = new FileSink("path/to/your/logfile.log");
+logger.AddSink(fileSink);
+```
 ## Writing Log Messages
 With the logger configured, you can start logging messages. Create instances of the Message class and pass them to the logger's Log method.
 
-/* 
+```csharp 
 var debugMessage = new Message("This is a debug message", LogLevel.DEBUG, "Application");
 logger.Log(debugMessage);
 
 var errorMessage = new Message("This is an error message", LogLevel.ERROR, "Database");
 logger.Log(errorMessage);
-*/
+```
 
 ## Advanced Configuration
 Custom Sinks
 You can extend the Logger Library by implementing custom sinks. To create a custom sink, implement the ISink interface and define the behavior in the Log method.
 
-/*
+```csharp 
 public class CustomSink : ISink
 {
     public void Log(Message message)
@@ -51,7 +52,7 @@ public class CustomSink : ISink
 // Add the custom sink to the logger
 var customSink = new CustomSink();
 logger.AddSink(customSink);
-*/
+```
 
 ## Filtering Messages:
 If you need to filter messages based on their level or other criteria, you can implement this logic within your custom sink or by extending the Logger class.
