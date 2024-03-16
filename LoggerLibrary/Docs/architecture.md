@@ -4,10 +4,10 @@
 
 ## Core Components:
 The Logger Library architecture consists of several core components working together to provide comprehensive logging capabilities. These include:
-	> Logger: The central component that applications interact with to log messages. It manages routing of messages to appropriate sinks based on the message level and sink configurations.
-	> Message: Represents a log message with properties including the message content, level (e.g., DEBUG, INFO, WARN, ERROR, FATAL), and namespace.
-	> Sink: An interface defining a destination for log messages. Implementations of this interface allow the library to log messages to various outputs such as console, file, database, or external systems.
-	> LogLevel: An enumeration that defines the possible levels of log messages, used for filtering messages based on their importance.
+- Logger: The central component that applications interact with to log messages. It manages routing of messages to appropriate sinks based on the message level and sink configurations.
+- Message: Represents a log message with properties including the message content, level (e.g., DEBUG, INFO, WARN, ERROR, FATAL), and namespace.
+- Sink: An interface defining a destination for log messages. Implementations of this interface allow the library to log messages to various outputs such as console, file, database, or external systems.
+- LogLevel: An enumeration that defines the possible levels of log messages, used for filtering messages based on their importance.
 
 ## Component Interaction:
 1. Logging Process:
@@ -21,9 +21,9 @@ The Logger Library architecture consists of several core components working toge
 
 ## Extensibility
 The Logger Library is designed with extensibility in mind:
-	> Custom Sinks: Developers can extend the ISink interface to create custom sinks that log to new destinations.
-	> Level Filtering: Sinks can be configured to filter messages based on their level, allowing for flexible log management.
-	> Formatting: Custom formatting can be applied to log messages by extending the logging process within custom sinks.
+- Custom Sinks: Developers can extend the ISink interface to create custom sinks that log to new destinations.
+- Level Filtering: Sinks can be configured to filter messages based on their level, allowing for flexible log management.
+- Formatting: Custom formatting can be applied to log messages by extending the logging process within custom sinks.
 
 ## Configuration:
 The Logger Library supports dynamic configuration, enabling developers to configure sinks, log levels, and other settings without modifying the application code. Configuration can be loaded from files, environment variables, or programmatically set during runtime.

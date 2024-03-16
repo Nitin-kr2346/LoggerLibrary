@@ -40,8 +40,8 @@ You can configure the logger or specific sinks to filter messages based on their
 
 ```csharp
 logger.AddNamespaceFilter("MyApplication.Data", LogLevel.ERROR);
-This configuration would only log ERROR level messages from the MyApplication.Data namespace.
 ```
+This configuration would only log ERROR level messages from the MyApplication.Data namespace.
 ## Custom Sink Configuration
 For custom logging needs, you can implement and configure custom sinks.
 
@@ -60,8 +60,8 @@ Example of setting a custom message format:
 
 ```csharp
 logger.SetMessageFormat("{Timestamp} [{Level}] {Namespace}: {Message}");
-This format includes a timestamp, the log level, namespace, and the message content.
 ```
+This format includes a timestamp, the log level, namespace, and the message content.
 ## Environment-Specific Configuration
 Different environments (development, testing, production) may require different logging configurations. Here's how you can tailor logging for each environment.
 
