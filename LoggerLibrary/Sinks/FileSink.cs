@@ -1,5 +1,6 @@
 ﻿using LoggerLibrary.Interface;
 using LoggerLibrary.Model;
+using System;
 using System.IO;
 
 namespace LoggerLibrary.Sinks
@@ -36,7 +37,7 @@ namespace LoggerLibrary.Sinks
         {
             using (var writer = new StreamWriter(_filePath, true))
             {
-                writer.WriteLine($"[{message.Level}] {message.Namespace}: {message.Content}");
+                writer.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] [{message.Level}] {message.Namespace}: {message.Content}");
             }
         }
     }

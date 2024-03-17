@@ -21,7 +21,7 @@ namespace LoggerLibrary.Sinks
         /// </remarks>
         public void Log(Message message)
         {
-            Console.WriteLine($"[{message.Level}] {message.Namespace}: {message.Content}");
+            Console.WriteLine($"[{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}] [{message.Level}] {message.Namespace}: {message.Content}");
         }
     }
 }
